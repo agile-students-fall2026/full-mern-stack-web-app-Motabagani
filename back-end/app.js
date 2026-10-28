@@ -12,6 +12,9 @@ app.use(cors()) // allow cross-origin resource sharing
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
+// serve static files, such as images, from the public directory
+app.use('/static', express.static(`${__dirname}/public`))
+
 // connect to database
 mongoose
   .connect(`${process.env.DB_CONNECTION_STRING}`)
@@ -76,6 +79,18 @@ app.post('/messages/save', async (req, res) => {
       status: 'failed to save the message to the database',
     })
   }
+})
+
+// a route to handle fetching the content of the About Us page
+app.get('/about', (req, res) => {
+  res.json({
+    name: 'Hashim Motabagani',
+    paragraphs: [
+      "Hi, I'm Hashim! I'm a Senior Computer Science and Economics student at New York University,  Outside of class I love graphic design, football (both American and Soccer).",
+    ],
+    imageUrl: `${req.protocol}://${req.get('host')}/static/images/hashim.jpg`,
+    status: 'all good',
+  })
 })
 
 // export the express app we created to make it available to other modules

@@ -1,0 +1,25 @@
+.AboutUs-article {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.AboutUs-photo {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  margin: 0 auto 1em;
+  border-radius: 8px;
+}
+
+.AboutUs-article p {
+  margin-bottom: 1em;
+}
+
+.AboutUs-article h2 {
+  text-align: center;
+}
+
+.AboutUs-error {
+  color: red;
+}
